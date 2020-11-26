@@ -5,6 +5,10 @@
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
+    "prettier": "prettier \"src/**/*.{tsx, ts}\" --check",
+    "prettier:fix": "prettier \"src/**/*.{tsx, ts}\" --write",
+    "stylelint": "stylelint \"src/**/*.tsx\"",
+    "stylelint:fix": "stylelint \"src/**/*.tsx\" --fix",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
@@ -16,11 +20,20 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/styled-components": "^5.1.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0-next.98",
+    "styled-components": "^5.2.1",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "prettier": "^2.2.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-order": "^4.1.0"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +52,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run prettier && npm run stylelint"
+    }
   }
 }
